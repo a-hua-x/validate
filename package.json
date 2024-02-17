@@ -1,0 +1,12 @@
+{
+    "type": "module",
+    "license": "ISC",
+    "author": "a_hua",
+    "version": "1.0.0",
+    "name": "validatejs",
+    "main": "dist/index.js",
+    "keywords": ["validate", "validatejs", "a-hua-validatejs", "ahua-validatejs", "a-hua-x-validatejs"],
+    "devDependencies": {
+        "tern": "^0.24.3"
+    }
+}
