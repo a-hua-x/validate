@@ -5,8 +5,8 @@
     "version": "1.0.0",
     "name": "validate-pkg",
     "main": "dist/index.js",
-    "homepage": "https://github.com/a-hua-x/validatejs",
-    "bugs": "https://github.com/a-hua-x/validatejs/issues",
+    "homepage": "https://github.com/a-hua-x/validate",
+    "bugs": "https://github.com/a-hua-x/validate/issues",
     "scripts": {},
     "keywords": [
         "validate",
@@ -16,6 +16,6 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/a-hua-x/validatejs.git"
+        "url": "git+https://github.com/a-hua-x/validate.git"
     }
 }
