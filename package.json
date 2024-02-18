@@ -2,17 +2,17 @@
     "type": "module",
     "license": "ISC",
     "author": "a_hua",
-    "version": "1.0.1",
-    "name": "pkg-validatejs",
+    "version": "1.0.0",
+    "name": "validate-pkg",
     "main": "dist/index.js",
     "homepage": "https://github.com/a-hua-x/validatejs",
     "bugs": "https://github.com/a-hua-x/validatejs/issues",
     "scripts": {},
     "keywords": [
         "validate",
-        "a-hua-validatejs",
-        "ahua-validatejs",
-        "a-hua-x-validatejs"
+        "a-hua-validate",
+        "ahua-validate",
+        "a-hua-x-validate"
     ],
     "repository": {
         "type": "git",
