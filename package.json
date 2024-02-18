@@ -7,9 +7,14 @@
     "main": "dist/index.js",
     "homepage": "https://github.com/a-hua-x/validatejs",
     "bugs": "https://github.com/a-hua-x/validatejs/issues",
-    "keywords": ["validate", "a-hua-validatejs", "ahua-validatejs", "a-hua-x-validatejs"],
+    "keywords": [
+        "validate",
+        "a-hua-validatejs",
+        "ahua-validatejs",
+        "a-hua-x-validatejs"
+    ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/a-hua-x/validatejs"
+        "url": "git+https://github.com/a-hua-x/validatejs.git"
     }
 }
