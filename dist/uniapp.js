@@ -1,5 +1,5 @@
 
-import _validate from '../dist/index.js'
+import _validate from './index.js'
 
 /**
  * @description 验证 
