@@ -8,6 +8,10 @@ delete method.validityBrithBy15IdCard
 
 /**
  * @description 验证 
+ * @typedef Data { [key: string]: Value } 校验对象
+ * @type { { [key: string]: Value } }
+ * @typedef Value { string | number | (string | number)[] } 校验值
+ * @type { string | number | (string | number)[] }
  * @typedef Rules {
  *  name: string 字段名;
  *  rule: Rule | Rule[] | (() => Rule | Rule[]) 校验规则;
@@ -69,7 +73,7 @@ delete method.validityBrithBy15IdCard
  *  }
  * }
  * @type { { message: string, callBack: (value: string | number | [string | number][], method: METHOD) => boolean } }
- * @param { { [key: string]: string | number | Array<string | number> } } data 校验对象
+ * @param { Data } data 校验对象
  * @param { Rules | Rules[] } rules 校验规则
  * @returns { Promise<void | Error> }
  */

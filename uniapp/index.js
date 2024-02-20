@@ -1,16 +1,5 @@
 
-import Method from './method';
-
-type Value = string | number | (string | number)[];
-type Rule = 'required' | 'mobile' | 'email' | 'carNo' | 'idCard' | 'amount' | 'number' | 'chinese' | 'notChinese' | 'english' | 'enAndNo' | 'enOrNo' | 'special' | 'emoji' | 'date' | 'url' | 'same' | 'range' | 'minLength' | 'maxLength' | 'keyword' | 'enAndNoANSpecial';
-type Data = { [key: string]: Value };
-type Validator = { message: string, callBack: (value: Value, method: Method) => boolean };
-type Rules = {
-    name: string;
-    rule: Rule | Rule[] | (() => Rule | Rule[])
-    message: string | string[] | (() => string | string[])
-    validator?: Validator | Validator[]
-};
+import _validate from '../dist/index.js'
 
 /**
  * @description 验证 
@@ -79,13 +68,17 @@ type Rules = {
  *  }
  * }
  * @type { { message: string, callBack: (value: string | number | [string | number][], method: METHOD) => boolean } }
- * @param { { [key: string]: string | number | Array<string | number> } } data 校验对象
+ * @param { Data } data 校验对象
  * @param { Rules | Rules[] } rules 校验规则
+ * @param { ShowToastOptions } showToastOptions uniapp文档https://uniapp.dcloud.net.cn/api/ui/prompt.html#showtoast
  * @returns { Promise<void | Error> }
  */
-declare function validate(data: Data, rules: Rules | Rules[]): Promise<void | Error>;
-declare namespace validate {
-    export type { Value, Rule, Data, Validator, Rules, Method }
-}
+export default async function validate(data, rules, showToastOptions = {}) {
+    try {
+        await _validate(data, rules)
 
-export = validate;
+    } catch (error) {
+        uni.showToast({ title: error.message, icon: 'none', ...showToastOptions })
+        return Promise.reject(error)
+    }
+}

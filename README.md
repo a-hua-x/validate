@@ -3,13 +3,13 @@
 ## Install
 
 ```javascript
-npm install validatejs --save-dev
+npm install validate-pkg --save-dev;
 ```
 
 ## Usage
 
 ```javascript
-import validate from 'validatejs';
+import validate from 'validate-pkg';
 
 const data = { name: '' };
 
@@ -27,8 +27,38 @@ const rules = {
 };
 
 try {
-    validate(data， rules);
-    validate(data， [rules]);
+    await validate(data， rules);
+    await validate(data， [rules]);
+
+} catch({ message }) {
+    console.log(message);
+}
+```
+
+## Uniapp
+
+```javascript
+import validate from 'validate-pkg/uniapp';
+
+const data = { name: '' };
+
+/** rules：支持数组/对象写法 */
+const rules = {
+    name: 'name',
+    rule: 'required' || ['required'] || () => 'required' || ['required'],
+    message: '请输入您的姓名哦～' || ['请输入您的姓名哦～'] || () => '请输入您的姓名哦～' || ['请输入您的姓名哦～'],
+    validator: [
+        {
+            message: 'validator：支持数组/对象写法',
+            callBack: (value, method) => value || method.nullOrEmpty(value)
+        }
+    ]
+};
+
+try {
+    await validate(data， rules);
+    await validate(data， [rules]);
+    await validate(data， [rules], showToastOptions);
 
 } catch({ message }) {
     console.log(message);
@@ -41,51 +71,77 @@ try {
 function validate(data, rules): Promise<void | Error>;
 ```
 
-### validate.data
+## Type
 
-| data       |  Object  |
+```javascript
+import { Data, Value, Rules, Rule, Validator, Method, ShowToastOptions } from 'validate-pkg';
+import type { Data, Value, Rules, Rule, Validator, Method, ShowToastOptions } from 'validate-pkg';
+```
+
+### validate.Data
+
+| Data       |  Object  |
 | :----:     | :------  |
-| data.key   |  string  |
-| data.value | string / number / string[] / number[] |
+| Data.key   |  string  |
+| Data.value |  Value   |
 
-### validate.rules
+### validate.Value
 
-|       rules        | Object / Object[] |
-|    :--------:      | :---------------- |
-|    rules.name      | string            |
-|    rules.rule      | [Rule === string] Rule / Rule[] / (() => Rule / Rule[]) |
+| Value  |  string / number / (string / number)[]  |
+| :----: | :-------------------------------------  |
+
+### validate.Rules
+
+|       Rules        | Object / Object[] |
+|     :--------:     | :---------------- |
+|    Rules.name      | string            |
+|    Rules.rule      | [Rule === string] Rule / Rule[] / (() => Rule / Rule[]) |
+|   Rules.message    |      string / string[] / (() => string / string[])      |
+|  Rules.validator   |            Validator ===  Object / Object[]             |
+
+### validate.Rule
+
+|       Rule         | [Rule === string] Rule / Rule[] / (() => Rule / Rule[]) |
+|     :--------:     | :------------------------------------------------------ |
 |        Rule        | required：必填； / mobile：手机号； / email：邮箱； / carNo：车牌号； / idCard：身份证； / amount：金额； / number：数字； / chinese：中文； / notChinese：非中文； / english：英文； / enAndNo：英文和数字； / enOrNo：英文或数字； / special：特殊字符； / emoji：表情符； / date：日期； / url：地址； / same：与某个字段相同； / range：在某个范围内； / minLength：最小长度； / maxLength：最大长度； / keyword：关键字； / enAndNoANSpecial：是否两种或以上的数字/小写字母/大写字母/其他特殊符号的组合； |
-|  rules.message     |      string / string[] / (() => string / string[])      |
-|  rules.validator   |            Validator ===  Object / Object[]             |
+
+### validate.Validator
+
+|     Validator      |            Validator ===  Object / Object[]             |
+|    :---------:     | :------------------------------------------------------ |
 | Validator.message  |      string / string[] / (() => string / string[])      |
 | Validator.callBack |               (value, method) => boolean                |
 
-#### Validator.callBack.param.method
+#### Validator.Method
 
-|          method         |               Object              |
+|          Method         |               Object              |
 | :---------------------: | :-------------------------------- |
-|       method.url        | (value: string) => boolean 是否url |
-|       method.same       | (value1: unknown, value2: unknown) => boolean 是否与某个字段相同 |
-|       method.date       | (value: string) => boolean 是否日期 |
-|       method.email      | (value: unknown) => boolean 是否邮箱 |
-|       method.carNo      | (value: string) => boolean 是否车牌号 |
-|       method.emoji      | (value: string) => boolean 是否表情符 |
-|       method.range      | (value: unknown, range1: unknown, range2: unknown) => boolean 是否在某个范围内 |
-|      method.enOrNo      | (value: unknown, [boolean: boolean = true]是否包含特殊字符) => boolean 是否英文或数字 |
-|      method.amount      | (value: string / number) => boolean 是否金额 |
-|      method.number      | (value: string / number) => boolean 是否数字 |
-|      method.idCard      | (value: string / number) => boolean 是否身份证 |
-|      method.mobile      | (value: string / number) => boolean 是否手机号 |
-|      method.keyword     | (value: string, keywords: string) => boolean 是否关键字 |
-|      method.enAndNo     | (value: string) => boolean 是否 6~32 位数字和字母组合 |
-|      method.chinese     | (value: string) => boolean 是否中文 |
-|      method.english     | (value: string) => boolean 是否英文 |
-|      method.special     | (value: string) => boolean 是否特殊字符 |
-|     method.minLength    | (value: (string / number)[], min: string / number) => boolean 是否最小长度 |
-|     method.maxLength    | (value: (string / number)[], max: string / number) => boolean 是否最大长度 |
-|    method.notChinese    | (value: string) => boolean 是否不包含中文，可以有特殊字符 |
-|    method.nullOrEmpty   | (value: unknown) => boolean 是否为空 |
-| method.enAndNoANSpecial | (value: string) => boolean 是否两种或以上的数字/小写字母/大写字母/其他特殊符号的组合 |
+|       Method.url        | (value: string) => boolean 是否url |
+|       Method.same       | (value1: unknown, value2: unknown) => boolean 是否与某个字段相同 |
+|       Method.date       | (value: string) => boolean 是否日期 |
+|       Method.email      | (value: unknown) => boolean 是否邮箱 |
+|       Method.carNo      | (value: string) => boolean 是否车牌号 |
+|       Method.emoji      | (value: string) => boolean 是否表情符 |
+|       Method.range      | (value: unknown, range1: unknown, range2: unknown) => boolean 是否在某个范围内 |
+|      Method.enOrNo      | (value: unknown, [boolean: boolean = true]是否包含特殊字符) => boolean 是否英文或数字 |
+|      Method.amount      | (value: string / number) => boolean 是否金额 |
+|      Method.number      | (value: string / number) => boolean 是否数字 |
+|      Method.idCard      | (value: string / number) => boolean 是否身份证 |
+|      Method.mobile      | (value: string / number) => boolean 是否手机号 |
+|      Method.keyword     | (value: string, keywords: string) => boolean 是否关键字 |
+|      Method.enAndNo     | (value: string) => boolean 是否 6~32 位数字和字母组合 |
+|      Method.chinese     | (value: string) => boolean 是否中文 |
+|      Method.english     | (value: string) => boolean 是否英文 |
+|      Method.special     | (value: string) => boolean 是否特殊字符 |
+|     Method.minLength    | (value: (string / number)[], min: string / number) => boolean 是否最小长度 |
+|     Method.maxLength    | (value: (string / number)[], max: string / number) => boolean 是否最大长度 |
+|    Method.notChinese    | (value: string) => boolean 是否不包含中文，可以有特殊字符 |
+|    Method.nullOrEmpty   | (value: unknown) => boolean 是否为空 |
+| Method.enAndNoANSpecial | (value: string) => boolean 是否两种或以上的数字/小写字母/大写字母/其他特殊符号的组合 |
+
+#### Validator.ShowToastOptions
+
+* uniapp文档[https://uniapp.dcloud.net.cn/api/ui/prompt.html#showtoast]
 
 ## example
 

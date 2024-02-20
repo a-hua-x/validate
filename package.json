@@ -6,7 +6,7 @@
     "name": "validate-pkg",
     "main": "dist/index.js",
     "module": "dist/index.js",
-    "types": "types/index.d.ts",
+    "types": "types/distIndex.d.ts",
     "homepage": "https://github.com/a-hua-x/validate",
     "bugs": "https://github.com/a-hua-x/validate/issues",
     "description": "A simple and easy-to-use data validation library",
@@ -16,10 +16,22 @@
     ],
     "files": [
         "dist",
-        "types"
+        "types",
+        "LICENSE",
+        "README.md"
     ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/a-hua-x/validate.git"
+    },
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./types/distIndex.d.ts"
+        },
+        "./uniapp": {
+            "import": "./dist/uniapp.js",
+            "types": "./types/uniapp.d.ts"
+        }
     }
 }
