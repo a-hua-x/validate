@@ -1,18 +1,22 @@
 {
     "type": "module",
-    "license": "ISC",
-    "author": "a_hua",
+    "license": "MIT",
+    "author": "a-hua",
     "version": "1.0.2",
     "name": "validate-pkg",
     "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "types/index.d.ts",
     "homepage": "https://github.com/a-hua-x/validate",
     "bugs": "https://github.com/a-hua-x/validate/issues",
+    "description": "A simple and easy-to-use data validation library",
     "scripts": {},
     "keywords": [
-        "validate",
-        "a-hua-validate",
-        "ahua-validate",
-        "a-hua-x-validate"
+        "validate"
+    ],
+    "files": [
+        "dist",
+        "types"
     ],
     "repository": {
         "type": "git",
