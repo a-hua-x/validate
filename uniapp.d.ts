@@ -1,5 +1,5 @@
 
-import type { Data, Value, Rules, Rule, Validator, Method } from './type'
+import type { Data, Value, Rules, Rule, Validator, Method } from './types/type'
 
 type ShowToastOptions = {
     title?: string

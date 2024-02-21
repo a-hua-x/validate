@@ -70,7 +70,7 @@ import _validate from './index.js'
  * @type { { message: string, callBack: (value: string | number | [string | number][], method: METHOD) => boolean } }
  * @param { Data } data 校验对象
  * @param { Rules | Rules[] } rules 校验规则
- * @param { ShowToastOptions } showToastOptions uniapp文档https://uniapp.dcloud.net.cn/api/ui/prompt.html#showtoast
+ * @param { [ShowToastOptions] } showToastOptions uniapp文档https://uniapp.dcloud.net.cn/api/ui/prompt.html#showtoast
  * @returns { Promise<void | Error> }
  */
 export default async function validate(data, rules, showToastOptions = {}) {
