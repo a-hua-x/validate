@@ -1,4 +1,4 @@
-# validatejs
+# validate-pkg
 
 ## Install
 
