@@ -11,7 +11,11 @@
     "description": "A simple and easy-to-use data validation library",
     "scripts": {},
     "keywords": [
-        "validate"
+        "form",
+        "rules",
+        "verify",
+        "validate",
+        "validation"
     ],
     "files": [
         "dist",
