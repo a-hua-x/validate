@@ -5,7 +5,7 @@
     "version": "1.0.10",
     "name": "validate-pkg",
     "main": "dist/index.js",
-    "types": "types/index.d.ts",
+    "types": "dist/index.d.ts",
     "homepage": "https://github.com/a-hua-x/validate",
     "bugs": "https://github.com/a-hua-x/validate/issues",
     "description": "A simple and easy-to-use data validation library",
