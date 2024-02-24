@@ -1,17 +1,5 @@
 
-import type { Data, Value, Rules, Rule, Validator, Method } from './type'
-
-type ShowToastOptions = {
-    title?: string
-    image?: string
-    mask?: boolean
-    duration?: number
-    fail?: () => void
-    success?: () => void
-    complete?: () => void
-    position?: 'top' | 'center' | 'bottom'
-    icon?: 'success' | 'error' | 'fail' | 'exception' | 'loading' | 'none'
-}
+import _validate from '../dist/index.js';
 
 /**
  * @description 验证 
@@ -85,9 +73,12 @@ type ShowToastOptions = {
  * @param { [ShowToastOptions] } showToastOptions uniapp文档https://uniapp.dcloud.net.cn/api/ui/prompt.html#showtoast
  * @returns { Promise<void | Error> }
  */
-declare function validate(data: Data, rules: Rules | Rules[], showToastOptions?: ShowToastOptions): Promise<void | Error>;
-declare namespace validate {
-    export type { Data, Value, Rules, Rule, Validator, Method, ShowToastOptions }
-}
+export default async function validate(data, rules, showToastOptions = {}) {
+    try {
+        await _validate(data, rules);
 
-export = validate;
+    } catch (error) {
+        uni.showToast({ title: error.message, icon: 'none', ...showToastOptions });
+        return Promise.reject(error);
+    }
+};

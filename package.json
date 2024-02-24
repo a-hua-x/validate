@@ -21,8 +21,7 @@
         "dist",
         "types",
         "LICENSE",
-        "README.md",
-        "uniapp.d.ts"
+        "README.md"
     ],
     "repository": {
         "type": "git",
@@ -31,12 +30,13 @@
     "exports": {
         ".": {
             "import": "./dist/index.js",
-            "types": "./types/index.d.ts"
+            "types": "./dist/index.d.ts"
         },
         "./uniapp": {
-            "types": "./uniapp.d.ts",
-            "import": "./dist/uniapp.js"
+            "import": "./uniapp/index.js",
+            "types": "./uniapp/index.d.ts"
         },
+        "./type": "./types/index.ts",
         "./package.json": "./package.json"
     }
 }

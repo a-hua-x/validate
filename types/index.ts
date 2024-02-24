@@ -1,5 +1,5 @@
 
-import _Method from './method';
+import _Method from '../dist/utils/method';
 
 export type Method = _Method;
 export type Value = string | number | (string | number)[];

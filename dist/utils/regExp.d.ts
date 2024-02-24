@@ -8,6 +8,6 @@ type REGEXP = {
      * @return { boolean }
      */
     test: (regExp: RegExp, value: unknown) => boolean;
-}
+};
 
-export = REGEXP
+export = REGEXP;

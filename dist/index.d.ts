@@ -1,17 +1,5 @@
 
-import type { Data, Value, Rules, Rule, Validator, Method } from './types/type'
-
-type ShowToastOptions = {
-    title?: string
-    image?: string
-    mask?: boolean
-    duration?: number
-    fail?: () => void
-    success?: () => void
-    complete?: () => void
-    position?: 'top' | 'center' | 'bottom'
-    icon?: 'success' | 'error' | 'fail' | 'exception' | 'loading' | 'none'
-}
+import type { Data, Value, Rules, Rule, Validator, Method } from '../types';
 
 /**
  * @description 验证 
@@ -80,14 +68,13 @@ type ShowToastOptions = {
  *  }
  * }
  * @type { { message: string, callBack: (value: string | number | [string | number][], method: METHOD) => boolean } }
- * @param { Data } data 校验对象
+ * @param { { [key: string]: string | number | Array<string | number> } } data 校验对象
  * @param { Rules | Rules[] } rules 校验规则
- * @param { [ShowToastOptions] } showToastOptions uniapp文档https://uniapp.dcloud.net.cn/api/ui/prompt.html#showtoast
  * @returns { Promise<void | Error> }
  */
-declare function validate(data: Data, rules: Rules | Rules[], showToastOptions?: ShowToastOptions): Promise<void | Error>;
+declare function validate(data: Data, rules: Rules | Rules[]): Promise<void | Error>;
 declare namespace validate {
-    export type { Data, Value, Rules, Rule, Validator, Method, ShowToastOptions }
+    export type { Data, Value, Rules, Rule, Validator, Method };
 }
 
 export = validate;

@@ -1,10 +1,10 @@
 
-import METHOD from './utils/method.js'
+import METHOD from './utils/method.js';
 
-const method = { ...METHOD }
-delete method.trueValidateCodeBy18IdCard
-delete method.validityBrithBy18IdCard
-delete method.validityBrithBy15IdCard
+const method = { ...METHOD };
+delete method.trueValidateCodeBy18IdCard;
+delete method.validityBrithBy18IdCard;
+delete method.validityBrithBy15IdCard;
 
 /**
  * @description 验证 
@@ -79,169 +79,169 @@ delete method.validityBrithBy15IdCard
  */
 function validate(data, rules) {
     return new Promise((resolve, reject) => {
-        rules = Array.isArray(rules) ? rules : [rules]
+        rules = Array.isArray(rules) ? rules : [rules];
         for (const item of rules) {
-            let { name, rule, message, validator } = item
-            const validateValue = data[name]
-            rule = typeof rule === 'function' ? rule() : rule
-            rule = Array.isArray(rule) ? rule : [rule]
-            message = typeof message === 'function' ? message() : message
-            message = Array.isArray(message) ? message : [message]
-            validator = Array.isArray(validator) ? validator : validator ? [validator] : []
-            validator = validator.filter(Boolean)
-            if (!name) continue
+            let { name, rule, message, validator } = item;
+            const validateValue = data[name];
+            rule = typeof rule === 'function' ? rule() : rule;
+            rule = Array.isArray(rule) ? rule : [rule];
+            message = typeof message === 'function' ? message() : message;
+            message = Array.isArray(message) ? message : [message];
+            validator = Array.isArray(validator) ? validator : validator ? [validator] : [];
+            validator = validator.filter(Boolean);
+            if (!name) continue;
 
             for (let index = 0; index < rule.length; index++) {
-                let ruleItem = rule[index]
-                const _message = message[index]
-                if (!_message || !ruleItem) continue
-                let value = ''
+                let ruleItem = rule[index];
+                const _message = message[index];
+                if (!_message || !ruleItem) continue;
+                let value = '';
 
                 if (ruleItem.includes(":")) {
-                    const temp = ruleItem.split(":")
-                    ruleItem = temp[0]
-                    value = temp[1]
+                    const temp = ruleItem.split(":");
+                    ruleItem = temp[0];
+                    value = temp[1];
                 }
 
                 let error = false
                 switch (ruleItem) {
                     case 'required': {
-                        error = METHOD.nullOrEmpty(validateValue)
-                        break
+                        error = METHOD.nullOrEmpty(validateValue);
+                        break;
                     }
                         
                     case 'mobile': {
-                        error = !METHOD.mobile(validateValue)
-                        break
+                        error = !METHOD.mobile(validateValue);
+                        break;
                     }
                         
                     case 'email': {
-                        error = !METHOD.email(validateValue)
-                        break
+                        error = !METHOD.email(validateValue);
+                        break;
                     }
                         
                     case 'carNo': {
-                        error = !METHOD.carNo(validateValue)
-                        break
+                        error = !METHOD.carNo(validateValue);
+                        break;
                     }
                         
                     case 'idCard': {
-                        error = !METHOD.idCard(validateValue)
-                        break
+                        error = !METHOD.idCard(validateValue);
+                        break;
                     }
                         
                     case 'amount': {
-                        error = !METHOD.amount(validateValue)
-                        break
+                        error = !METHOD.amount(validateValue);
+                        break;
                     }
                         
                     case 'number': {
-                        error = !METHOD.number(validateValue)
-                        break
+                        error = !METHOD.number(validateValue);
+                        break;
                     }
                         
                     case 'chinese': {
-                        error = !METHOD.chinese(validateValue)
-                        break
+                        error = !METHOD.chinese(validateValue);
+                        break;
                     }
                         
                     case 'notChinese': {
-                        error = !METHOD.notChinese(validateValue)
-                        break
+                        error = !METHOD.notChinese(validateValue);
+                        break;
                     }
                         
                     case 'english': {
-                        error = !METHOD.english(validateValue)
-                        break
+                        error = !METHOD.english(validateValue);
+                        break;
                     }
                         
                     case 'enAndNo': {
-                        error = !METHOD.enAndNo(validateValue)
-                        break
+                        error = !METHOD.enAndNo(validateValue);
+                        break;
                     }
                         
                     case 'enOrNo': {
-                        error = !METHOD.enOrNo(validateValue)
-                        break
+                        error = !METHOD.enOrNo(validateValue);
+                        break;
                     }
                         
                     case 'special': {
-                        error = METHOD.special(validateValue)
-                        break
+                        error = METHOD.special(validateValue);
+                        break;
                     }
                         
                     case 'emoji': {
-                        error = METHOD.emoji(validateValue)
-                        break
+                        error = METHOD.emoji(validateValue);
+                        break;
                     }
                         
                     case 'enAndNoANSpecial': {
-                        error = METHOD.enAndNoANSpecial(validateValue)
-                        break
+                        error = METHOD.enAndNoANSpecial(validateValue);
+                        break;
                     }
                         
                     case 'date': {
-                        error = !METHOD.date(validateValue)
-                        break
+                        error = !METHOD.date(validateValue);
+                        break;
                     }
                         
                     case 'url': {
-                        error = !METHOD.url(validateValue)
-                        break
+                        error = !METHOD.url(validateValue);
+                        break;
                     }
                         
                     case 'same': {
-                        error = !METHOD.same(validateValue, data[value])
-                        break
+                        error = !METHOD.same(validateValue, data[value]);
+                        break;
                     }
                         
                     case 'range': {
-                        let range = null
+                        let range = null;
                         try {
-                            range = JSON.parse(value)
-                            if (range.length <= 1) reject(new Error("range值传入有误！"))
+                            range = JSON.parse(value);
+                            if (range.length <= 1) reject(new Error("range值传入有误！"));
 
                         } catch (e) {
-                            reject(new Error("range值传入有误！"))
+                            reject(new Error("range值传入有误！"));
                         }
 
-                        error = !METHOD.range(validateValue, range[0], range[1])
-                        break
+                        error = !METHOD.range(validateValue, range[0], range[1]);
+                        break;
                     }
                         
                     case 'minLength': {
-                        error = !METHOD.minLength(validateValue, value)
-                        break
+                        error = !METHOD.minLength(validateValue, value);
+                        break;
                     }
                         
                     case 'maxLength': {
-                        error = !METHOD.maxLength(validateValue, value)
-                        break
+                        error = !METHOD.maxLength(validateValue, value);
+                        break;
                     }
                         
                     case 'keyword': {
-                        error = !METHOD.keyword(validateValue, value)
-                        break
+                        error = !METHOD.keyword(validateValue, value);
+                        break;
                     }
                         
                     default: {
-                        break
+                        break;
                     }
                 }
 
-                if (error) reject(new Error(_message))
+                if (error) reject(new Error(_message));
             }
             
             for (const item of validator) {
-                const { callBack } = item
-                let itemMessage = typeof item.message === 'function' ? item.message() : item.message
-                itemMessage = Array.isArray(itemMessage) ? itemMessage : [itemMessage]
-                if (callBack && !callBack(validateValue, method)) reject(new Error(itemMessage))
+                const { callBack } = item;
+                let itemMessage = typeof item.message === 'function' ? item.message() : item.message;
+                itemMessage = Array.isArray(itemMessage) ? itemMessage : [itemMessage];
+                if (callBack && !callBack(validateValue, method)) reject(new Error(itemMessage));
             }
-        }
+        };
 
-        resolve()
-    })
-}
+        resolve();
+    });
+};
 
-export default validate
+export default validate;

@@ -14,6 +14,6 @@ type TO = {
      * @return { number }
      */
     number: (value: unknown) => number
-}
+};
 
-export = TO
+export = TO;

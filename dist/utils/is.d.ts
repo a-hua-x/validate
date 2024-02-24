@@ -7,6 +7,6 @@ type IS = {
      * @return { boolean }
      */
     emptyArray: (value: unknown) => boolean
-}
+};
 
-export = IS
+export = IS;

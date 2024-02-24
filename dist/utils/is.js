@@ -8,6 +8,6 @@ const IS = {
     emptyArray: function (value) {
         return Array.isArray(value) && value.length <= 0
     }
-}
+};
 
-export default IS
+export default IS;

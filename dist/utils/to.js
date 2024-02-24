@@ -5,7 +5,7 @@ const TO = {
          * @description 转换为字符串
          * @param { unknown } value
          */
-    string: function(value) {
+    string: function (value) {
         return String(value)
     },
 
@@ -16,6 +16,6 @@ const TO = {
     number: function (value) {
         return Number(value)
     },
-}
+};
 
-export default TO
+export default TO;

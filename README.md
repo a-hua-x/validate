@@ -76,18 +76,8 @@ function validate(data, rules): Promise<void | Error>;
 ```javascript
 import { Data, Value, Rules, Rule, Validator, Method } from 'validate-pkg';
 import type { Data, Value, Rules, Rule, Validator, Method } from 'validate-pkg';
+import { Data, Value, Rules, Rule, Validator, Method, ShowToastOptions } from 'validate-pkg/type';
 import { Data, Value, Rules, Rule, Validator, Method, ShowToastOptions } from 'validate-pkg/uniapp';
-```
-
-## *.vue
-
-```javascript
-/** lang="ts" *.vue文件需在 global.d.ts 添加以下代码 */
-
-declare module "validate-pkg/uniapp" {
-    const validate: typeof import("validate-pkg/types/uniapp")
-    export default validate
-}
 ```
 
 ### validate.Data
