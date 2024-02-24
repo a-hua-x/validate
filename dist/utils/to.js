@@ -6,7 +6,7 @@ const TO = {
          * @param { unknown } value
          */
     string: function (value) {
-        return String(value)
+        return String(value);
     },
 
     /**
@@ -14,8 +14,8 @@ const TO = {
      * @param { unknown } value
      */
     number: function (value) {
-        return Number(value)
-    },
+        return Number(value);
+    }
 };
 
 export default TO;

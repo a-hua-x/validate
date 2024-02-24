@@ -6,7 +6,7 @@ type IS = {
      * @param { unknown } value
      * @return { boolean }
      */
-    emptyArray: (value: unknown) => boolean
+    emptyArray: (value: unknown) => boolean;
 };
 
 export = IS;

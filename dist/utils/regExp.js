@@ -7,8 +7,8 @@ const REGEXP = {
      * @param { unknown } value
      */
     test: function (regExp, value) {
-        value = TO.string(value)
-        return regExp.test(value)
+        value = TO.string(value);
+        return regExp.test(value);
     }
 };
 

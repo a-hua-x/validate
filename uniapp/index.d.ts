@@ -2,15 +2,15 @@
 import type { Data, Value, Rules, Rule, Validator, Method } from '../types';
 
 type ShowToastOptions = {
-    title?: string
-    image?: string
-    mask?: boolean
-    duration?: number
-    fail?: () => void
-    success?: () => void
-    complete?: () => void
-    position?: 'top' | 'center' | 'bottom'
-    icon?: 'success' | 'error' | 'fail' | 'exception' | 'loading' | 'none'
+    title?: string;
+    image?: string;
+    mask?: boolean;
+    duration?: number;
+    fail?: () => void;
+    success?: () => void;
+    complete?: () => void;
+    position?: 'top' | 'center' | 'bottom';
+    icon?: 'success' | 'error' | 'fail' | 'exception' | 'loading' | 'none';
 };
 
 /**

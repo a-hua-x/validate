@@ -37,7 +37,7 @@
             "import": "./uniapp/index.js",
             "types": "./uniapp/index.d.ts"
         },
-        "./type": "./types/index.ts",
+        "./type": "./types/index.d.ts",
         "./package.json": "./package.json"
     }
 }
