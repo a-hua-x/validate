@@ -105,7 +105,7 @@ import { Data, Value, Rules, Rule, Validator, Method, ShowToastOptions } from 'v
 
 |       Rule         | [Rule === string] Rule / Rule[] / (() => Rule / Rule[]) |
 |     :--------:     | :------------------------------------------------------ |
-|        Rule        | required：必填； / mobile：手机号； / email：邮箱； / carNo：车牌号； / idCard：身份证； / amount：金额； / number：数字； / chinese：中文； / notChinese：非中文； / english：英文； / enAndNo：英文和数字； / enOrNo：英文或数字； / special：特殊字符； / emoji：表情符； / date：日期； / url：地址； / same：与某个字段相同； / range：在某个范围内； / minLength：最小长度； / maxLength：最大长度； / keyword：关键字； / enAndNoANSpecial：是否两种或以上的数字/小写字母/大写字母/其他特殊符号的组合； |
+|        Rule        | required 必填； / mobile 手机号； / email 邮箱； / carNo 车牌号； / idCard 身份证； / amount 金额； / number 数字； / chinese 中文； / notChinese 非中文； / english 英文； / enAndNo 英文和数字； / enOrNo 英文或数字； / special 特殊字符； / emoji 表情符； / date 日期； / url 地址； / same 与某个字段相同； / range 在某个范围内； / minLength 最小长度； / maxLength 最大长度； / keyword 关键字； / enAndNoANSpecial 是否两种或以上的数字/小写字母/大写字母/其他特殊符号的组合； |
 
 ### validate.Validator
 
