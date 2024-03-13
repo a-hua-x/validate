@@ -30,11 +30,11 @@
     },
     "exports": {
         ".": {
-            "import": "./dist/index.js",
+            "import": "./dist/index.map.js",
             "types": "./dist/index.d.ts"
         },
         "./uniapp": {
-            "import": "./uniapp/index.js",
+            "import": "./uniapp/index.map.js",
             "types": "./uniapp/index.d.ts"
         },
         "./type": "./types/index.d.ts",

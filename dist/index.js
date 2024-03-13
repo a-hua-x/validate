@@ -83,13 +83,13 @@ function validate(data, rules) {
         for (const item of rules) {
             let { name, rule, message, validator } = item;
             const validateValue = data[name];
+			if (!(name in data) || !name) continue;
             rule = typeof rule === 'function' ? rule() : rule;
             rule = Array.isArray(rule) ? rule : [rule];
             message = typeof message === 'function' ? message() : message;
             message = Array.isArray(message) ? message : [message];
             validator = Array.isArray(validator) ? validator : validator ? [validator] : [];
             validator = validator.filter(Boolean);
-            if (!name) continue;
 
             for (let index = 0; index < rule.length; index++) {
                 let ruleItem = rule[index];
@@ -210,7 +210,7 @@ function validate(data, rules) {
                     }
                         
                     case 'minLength': {
-                        error = !METHOD.minLength(validateValue, value);
+                        error = validateValue ? !METHOD.minLength(validateValue, value) : false;
                         break;
                     }
                         
@@ -232,12 +232,12 @@ function validate(data, rules) {
                 if (error) reject(new Error(_message));
             }
             
-            for (const item of validator) {
-                const { callBack } = item;
-                let itemMessage = typeof item.message === 'function' ? item.message() : item.message;
+            for (const validatorItem of validator) {
+                const { callBack } = validatorItem;
+                let itemMessage = typeof validatorItem.message === 'function' ? validatorItem.message() : validatorItem.message;
                 itemMessage = Array.isArray(itemMessage) ? itemMessage : [itemMessage];
                 if (callBack && !callBack(validateValue, method)) reject(new Error(itemMessage));
-            }
+            };
         };
 
         resolve();
